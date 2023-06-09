@@ -1,0 +1,35 @@
+const questions = [
+  {
+    id="0",
+    question: "For a binary search algorithm to work, it is necessary that the array (list) must be-",
+    choices: [ "sorted",  "unsorted", "in a heap", "popped out of stack"],
+    answer: "sorted"
+  },
+  {
+    id="1",
+    question: "Which one of the below mentioned is linear data structure −",
+    choices: ["Queue", "Stack", "Berlin", "All of the above"],
+    answer: "All of the above"
+  },
+   {
+    id="2",
+    question: "Minimum number of queues required for priority queue implementation?",
+    choices: [ 5,4,3,2],
+    answer: 2
+  },
+  {
+    id="3",
+    question: "Quick sort running time depends on the selection of-",
+    choices: ["size of array", "sequence of values", "pivot element", " none of the above!"],
+    answer: "pivot element"
+  },
+   {
+    id="4", 
+    question: "Which of the following has search effeciency of Ο(1)",
+    choices: [ "Tree",  "Heap", "Hash Table", "Linked-List"],
+    answer: "Hash Table"
+  },
+];
+
+
+

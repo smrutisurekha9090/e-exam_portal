@@ -1,0 +1,23 @@
+.timer {
+    position: fixed;
+    margin-top: 2%;
+    margin-left: 70%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  .timer span {
+    padding: 4px;
+    border-radius: 2px;
+  }
+  
+  .timer #minutes {
+    background-color: #444;
+  }
+  
+  .timer #seconds {
+    background-color: #555;
+  }
+  

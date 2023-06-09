@@ -1,0 +1,135 @@
+$email = $_POST['email'];
+      $password = $_POST['password'];
+
+      $query = "SELECT * FROM signup WHERE email = '$email' AND password = '$password'";
+
+      $data= mysqli_query($conn, $query);
+      // $num=mysqli_num_rows($data);
+      
+      if(mysqli_num_rows($data) === 1){
+         $row = mysqli_fetch_assoc($data);
+
+         if($row['email'] == $email && $row['password'] == $password){
+            echo 'I am logged in';
+            // $_SESSION['userloginId'] = $row['email'];
+            header("location: e-exam/day1.php");
+            exit();
+         }
+         else{
+            echo 'Wrong Password';
+         }
+      }
+      // if($num==1)
+      // {
+         // while ($row = mysqli_fetch_row($data)) {
+         //    printf ("%s (%s)\n", $row[0], $row[1]);
+         //  }
+         //  mysqli_free_result($result);
+         //  session_start();
+         //  $_SESSION['userloginId']=$_POST['email'];
+         //  header("location: e-exam/day1.php");
+      }
+         // $_SESSION['userloginId']=$_POST['email'];
+         // header("location: e-exam/day1.php");
+      // }
+      // else{
+      //    echo "<script>alert('Incorrect password')</script>";
+      // }
+   // }
+
+
+
+
+
+
+   <?php 
+
+
+
+include("connection.php"); ?>
+
+<?php
+   if(isset($_POST['register']))
+   {
+      $fname=  $_POST['fname'];
+      $lname=  $_POST['lname'];
+      $cid=  $_POST['cid'];
+      $password=  $_POST['password'];
+      $cpassword=  $_POST['cpassword'];
+      $branch=  $_POST['branch'];
+      $gender=  $_POST['gender'];
+      $age=  $_POST['age'];
+      $email=  $_POST['email'];
+      $phone=  $_POST['phone'];
+      $address=  $_POST['address'];
+      $poscode=  $_POST['poscode'];
+      $ts=  $_POST['ts'];
+      $lang =implode("," ,$ts);
+      
+
+      $resume=  $_POST['resume']; 
+
+      
+
+      // (firstname,lastname,collegeid,passwor,cpassword,branch,gender,age,email,mobile,Addres,pos,skills,resum) 
+      if( $fname !="" && $lname !="" && $cid !="" && $password !="" && $cpassword !="" && $branch !="" &&
+      $gender!="" && $age!="" && $email!="" && $phone!="" && $address!="" && $poscode!="" && $ts!="" && $resume!="")
+      {
+
+       
+
+      // $quer = "INSERT INTO `project`.`signup` (`fname`,`lname`,`cid`,`password`,`cpassword`,`branch`,`gender`,`age`,`email`,`phone`,`address`,`poscode`,`ts`,`resume`,`Time`)  VALUES('$fname','$lname','$cid','$password','$cpassword','$branch','$gender',
+      // '$age',' $email','$phone','$address','$poscode','$lang','$resume',current_timestamp());";
+
+      $emailquery =" select * from `signup` where email ='$email' ";
+      $query= mysqli_query($conn,$emailquery);
+
+      $emailcount =mysqli_num_rows($query);
+      if($emailcount >0){
+         //echo "email already exist";
+         ?>
+         <script>
+            alert("Email already exists!!!");
+         </script>
+         <?php
+      }else{
+         if($password == $cpassword){
+               $insertquery ="insert into  signup (fname, lname, cid, password, cpassword, branch, gender, age, email, phone, address, poscode,ts, resume,Time)
+                values('$fname','$lname','$cid','$password','$cpassword','$branch','$gender',
+                '$age',' $email','$phone','$address','$poscode','$lang','$resume',current_timestamp());";
+
+                $iquery =mysqli_query($conn,$insertquery);
+                if($iquery){
+                  ?>
+                   <script>
+                     alert("connection success");
+                     </script>
+                  <?php
+                }else{
+                  ?>
+                   <script>
+                     alert("No connection ");
+                     </script>
+                  <?php
+                }
+         }else{
+            echo "password is not matching";
+         }
+      }
+
+      $data=mysqli_query($conn,$quer);
+
+      if($data){
+         //  echo "data inserted into database";
+         echo "<script>alert('data inserted into database');</script>";
+      }
+      else{
+         echo "failed";
+      }
+   }else
+   {
+      echo "<script>alert('please fill the form');</script>";
+   }
+   }
+
+?>
